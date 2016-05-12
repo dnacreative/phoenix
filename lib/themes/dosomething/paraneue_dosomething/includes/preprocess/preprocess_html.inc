@@ -37,5 +37,4 @@ function paraneue_dosomething_preprocess_html(&$vars) {
     ),
     'setting'
   );
-
 }
