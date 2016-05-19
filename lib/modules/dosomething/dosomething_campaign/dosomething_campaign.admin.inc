@@ -286,6 +286,9 @@ function dosomething_campaign_admin_custom_settings_page($node) {
   if (module_exists('dosomething_signup')) {
     $signup_data_config_form = drupal_get_form('dosomething_signup_node_signup_data_form', $node);
     $output .= render($signup_data_config_form);
+
+    $onboarding_config_form = drupal_get_form('dosomething_signup_node_onboarding_form', $node);
+    $output .= render($onboarding_config_form);
   }
   if (module_exists('dosomething_helpers')) {
     $form_id = 'dosomething_campaign_reportback_config_form';

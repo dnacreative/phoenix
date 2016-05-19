@@ -11,6 +11,7 @@ module_load_include('php', 'dosomething_api', 'includes/ApiCache');
 include_once 'dosomething_signup.features.inc';
 include_once 'dosomething_signup.forms.inc';
 include_once 'dosomething_signup.signup_data_form.inc';
+include_once 'dosomething_signup.onboarding.inc';
 include_once 'dosomething_signup.theme.inc';
 include_once 'includes/dosomething_signup.mobilecommons.inc';
 include_once 'includes/dosomething_signup.variable.inc';

@@ -10,6 +10,7 @@
  */
 function dosomething_campaign_preprocess_node(&$vars) {
   if ($vars['type'] != 'campaign' || $vars['view_mode'] != 'full') return;
+
   $node = $vars['node'];
   $vars['campaign'] = dosomething_campaign_load($node);
 
@@ -386,7 +387,6 @@ function dosomething_campaign_preprocess_media_vars(&$vars, &$wrapper) {
  */
 function dosomething_campaign_preprocess_action_page(&$vars, &$wrapper) {
   $campaign = $vars['campaign'];
-  $user = $vars['user'];
 
   // Get 3 recommended campaigns from recommendation engine.
   $signup_takeover_recommended_nids = dosomething_campaign_get_recommended_campaign_nids(NULL, NULL, 3);
@@ -401,23 +401,11 @@ function dosomething_campaign_preprocess_action_page(&$vars, &$wrapper) {
     array_push($signup_takeover_recommended_campaigns, $campaign_array);
   }
 
-  // Check to see if this is a user's first signup for a campaign.
-  $new_user = dosomething_signup_first_signup($user->uid);
-  if ($new_user) {
-    $user_status = 'user-status-new';
-  }
-  else {
-    $user_status = 'user-status-existing';
-  }
-
-  // Send 3 campaigns to signup takeover, prompting user to signup for multiple campaigns. Also send param for existing or new user.
+  // Send 3 campaigns to signup takeover, prompting user to signup for multiple campaigns.
   drupal_add_js(
     array(
       'dosomethingCampaign' => array(
         'recommendedCampaigns' => $signup_takeover_recommended_campaigns,
-      ),
-      'dosomethingUser' => array(
-        'userStatus' => $user_status,
       ),
     ),
     array('type' => 'setting')
