@@ -183,6 +183,17 @@ function paraneue_dosomething_preprocess_node_campaign(&$vars) {
     drupal_add_js($js, 'inline');
   }
 
+  // @TODO -- wheter or not to pop open should happen differently. i.e we need to
+  // happend after the skip form.
+  if (dosomething_signup_get_onboarding_status($vars['nid'])) {
+    // Add JS to open the signup data form modal.
+    $id = 'modal-onboarding';
+    $closeButton = 'skip';
+
+    $js = 'jQuery(document).ready(function() { DSModal.open( jQuery("#' . $id . '"), {animated: false, closeButton: "' . $closeButton . '"}); });';
+    drupal_add_js($js, 'inline');
+  }
+
   // If this is not the pitch page:
   if (!isset($vars['is_pitch_page'])) {
     $vars['reportbacks_gallery'] = paraneue_dosomething_preprocess_reportback_gallery($vars);

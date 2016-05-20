@@ -54,3 +54,12 @@ function dosomething_signup_node_onboarding_form_submit(&$form, &$form_state) {
 
   drupal_set_message("Updated.");
 }
+
+/*
+ * Gets the onboarding flag.
+ */
+function dosomething_signup_get_onboarding_status($nid) {
+  $vars = dosomething_helpers_get_variables('node', $nid);
+
+  return $vars['show_onboarding'];
+}

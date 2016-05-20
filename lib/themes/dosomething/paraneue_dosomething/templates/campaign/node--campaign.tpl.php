@@ -389,6 +389,13 @@
             </div>
           </div>
 
+          <?php // ONBOARDING MODAL // ?>
+          <div data-modal id="modal-onboarding" role="dialog">
+            <div class="modal__block">
+              <div class="takeover-container -no-slide"></div>
+            </div>
+
+          </div>
         </div>
       </div>
 
