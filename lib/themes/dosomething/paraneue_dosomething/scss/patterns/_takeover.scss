@@ -11,13 +11,13 @@ $transition: .7s;
     display: table;
   }
 
-
   @include media($medium) {
-    height: 450px;
+    height: 525px;
   }
 
-  h2, h3 {
-    color: $white;
+  .heading.-emphasized {
+    margin-left: 0px;
+    margin-top: 0px;
   }
 
   .takeover__screen {
